@@ -8,7 +8,6 @@ export const baseUrl = `${APP_CONSTANTS.ENDPOINTS.ACCOUNT_API_URL}/creative`;
 export function uploadCreative(creativeTitle, advertiser, product, successCallback) {
   return function (dispatch) {
     dispatch(showSpinner());
-
     return makePostRequest({
       url: baseUrl,
       body: {
@@ -22,11 +21,10 @@ export function uploadCreative(creativeTitle, advertiser, product, successCallba
       if (successCallback) {
         successCallback();
       }
-
-      //return dispatch(fetchCreativeList());
+      return dispatch(fetchCreativeList());
     }).
     then(() => {
-      dispatch(showSuccessBar(`Creative '${name}' uploaded successfully`));
+      dispatch(showSuccessBar(`Creative '${creativeTitle}' uploaded successfully`));
     }).
     catch(err => {
       console.error("Failed to upload a new create!", err);
@@ -47,7 +45,7 @@ export function fetchCreativeList(){
    }).
    then(checkAndGetResponse).
    then(response => {
-     dispatch(getOrganisationsSuccess(response));
+     dispatch(getCreativesSuccess(response));
 
      dispatch(hideSpinner());
    }).
@@ -55,7 +53,7 @@ export function fetchCreativeList(){
      console.error('Oops! Something went wrong! There was a problem with getting organisation details from the server!', err);
 
      dispatch(hideSpinner());
-     dispatch(showErrorBarWithError(`Organisations fetch failed!`, err));
+     dispatch(showErrorBarWithError(`Failed to fetch creatives!`, err));
     });
    }
 }

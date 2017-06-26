@@ -9,13 +9,11 @@ export const initialState = {
 
 export default createReducer(initialState, {
   [constants.GET_CREATIVES_SUCCESS]: (state, payload) => {
-
     if (payload.hasOwnProperty('creatives')) {
       return Object.assign({}, state, {
-        'creatives': _.cloneDeep(payload.organisations)
+        'creatives': _.cloneDeep(payload.creatives)
       });
     }
-
     return state;
   }
 });
