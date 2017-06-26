@@ -15,7 +15,6 @@ export const constants = createConstants(
 export const APPLICATION_BASE_PATH = '/';
 export const CREATIVE_PATH = `${APPLICATION_BASE_PATH}/creative`;
 export const CREATIVES_PER_PAGE = 10;
-
 export const VALID_FILE_EXTENSIONS = ['jpeg' , 'png', 'mp4' , 'mov' , 'swf' ,'scz'];
 
 export const HTTP_RESPONSE_CODE = {
