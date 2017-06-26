@@ -1,0 +1,141 @@
+.orderItemSelectContainer {
+    margin-bottom: 31px;
+}
+
+#itemSelect {
+  height: 100%;
+  background-color: $gsMist;
+  #itemSelectTop {
+    width: 100%;
+    padding-top: 104px;
+    background-color: $gsMist;
+    z-index: 3;
+    .innerWrap {
+      width: 976px;
+      height: 120px;
+      margin: 0 auto;
+      position: relative;
+      h1 {
+        padding-top: 39px;
+        margin: 0 auto 1px;
+        text-align: center;
+      }
+      ul#itemRadios {
+        text-align: center;
+        li {
+          width: inherit;
+          list-style: none;
+          display: inline-block;
+          margin-right: 6px;
+          &:last-child {
+            margin-right: 0px;
+          }
+          label {
+            position: inherit; //removed absolute for spacing
+          }
+        }
+      }
+    }
+  }
+  #items {
+    width: 1008px;
+    margin: 0 auto;
+    padding-top: 24px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  figure {
+    width: 336px;
+    height: 544px;
+    border: 16px solid transparent;
+    overflow: hidden;
+
+    figcaption {
+      width: 304px;
+      height: 512px;
+      position: absolute;
+      padding: 54px 40px 5px;
+      @include rgba-background(rgba(0, 4, 52, .5));
+      z-index: 1;
+      cursor: pointer;
+
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+
+      @extend %defaultTrans;
+
+      .header {
+         h2 {
+            color: $white;
+            line-height: 24px;
+            margin-bottom: 17px;
+         }
+         p {
+            @extend %defaultP;
+            color: $white;
+            @include opacity(0);
+            padding-top: 16px;
+            @extend %defaultTrans;
+         }
+      }
+      .body {
+        @include opacity(0);
+        @extend %defaultTrans;
+        h3 {
+          color: $white;
+          margin-bottom: 11px;
+        }
+        .segments {
+          width: 100%;
+
+          .segment {
+            @extend %defaultLabelLight;
+            color: $white;
+            list-style: none;
+            margin-bottom: 3px;
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+
+            .label {
+                width: 70%;
+            }
+            .volume {
+              @extend %defaultLabel;
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+    img {
+      width: 304px;
+      height: 512px;
+      transform: scale(1.1);
+      @extend %defaultTrans;
+    }
+    &:hover {
+      figcaption {
+        @include rgba-background(rgba(0, 4, 52, .7));
+        .header {
+          p {
+            padding-top: 0px;
+            @include opacity(1);
+          }
+        }
+        .body {
+          padding-bottom: 30px;
+          @include opacity(1);
+        }
+      }
+      img {
+        transform: scale(1);
+      }
+    }
+  }
+}

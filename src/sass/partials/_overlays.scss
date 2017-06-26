@@ -1,0 +1,84 @@
+%defaultOverlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 100%;
+  left: 0;
+  z-index: 200;
+  background: rgba(221,221,221,0);
+  @include transition(background 0.2s ease-in-out, top 0.2s 0.2s ease-in-out);
+  &.active {
+    top: 0;
+    background: rgba(221,221,221,0.8);
+    @include transition(background 0.2s ease-in-out);
+  }
+}
+%defaultModal {
+  width: 320px;
+  margin: 0 auto;
+  padding: 48px;
+  text-align: center;
+  @include vertical-align(45%);
+  background-color: $white;
+  @extend %defaultShadow;
+  @include opacity(0);
+  @include transition(transform 0.2s ease-in-out, opacity 0.2s ease-in-out);
+}
+
+section[id*="overlay"] {
+  @extend %defaultOverlay;
+  .modal {
+    @extend %defaultModal;
+    h2 {
+      margin-bottom: 13px;
+    }
+    p {
+      @extend %defaultP;
+      margin-bottom: 8px;
+      &:last-of-type {
+        margin-bottom: 25px;
+      }
+      span {
+        font-family: $fontOne;
+      }
+    }
+    button {
+      margin-bottom: 16px;
+      &:last-child {
+        margin-bottom: 0px;
+      }
+    }
+    .ccLoader {
+      margin-bottom: 8px;
+    }
+  }
+  .modal-send-creative{
+    width: 380px;
+  }
+  .send-creative-button{
+    margin-left :auto;
+    margin-right:auto;
+  }
+  &.active {
+    .modal {
+      @include opacity(1);
+    }
+  }
+}
+
+#spinnerWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: darkgrey;
+  opacity: 0.5;
+  z-index: 1000;
+
+  div {
+    position: absolute;
+    top: 49%;
+    left: 49%;
+  }
+}

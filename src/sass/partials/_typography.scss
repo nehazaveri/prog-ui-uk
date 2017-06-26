@@ -1,0 +1,66 @@
+//FONT SIZE
+$base_font_size: 16;
+$base_line_height: 1.5;
+
+@mixin font($pixels, $weight : normal) { //https://coderwall.com/p/_7wmcg/font-sizing-with-rem-in-scss
+	font-size: $pixels + px;
+	font-size: ( $pixels / $base_font_size ) + rem;
+	line-height:  ( $pixels * $base_line_height ) + px;
+	line-height: (( $pixels / $base_font_size) * $base_line_height ) + rem;
+	font-weight: $weight;
+}
+
+%defaultH {
+	font-family: $fontOne;
+	@include font(32, 400);
+	color: $copyOne;
+	text-transform: uppercase;
+}
+
+h1 {
+	@extend %defaultH;
+}
+h2 {
+	@extend %defaultH;
+	@include font(22, 400);
+}
+h3 {
+	@extend %defaultH;
+	@include font(14, 400);
+}
+%defaultLabel {
+	font-family: $fontOne;
+	@include font(14, 400);
+	color: $copyOne;
+}
+%defaultLabelLight {
+	font-family: $fontTwo;
+	@include font(14, 400);
+	color: $copyOne;
+}
+%defaultP {
+	font-family: $fontTwo;
+	@include font(16, 400);
+	color: $copyTwo;
+}
+// h1.headline {
+// 	@include font(48, 400);
+// }
+// %defaultP {
+// 	font-family: $fontOne;
+// 	@include font(16, 400);
+// 	color: $gsOne;
+// 	margin: 0px 0px 20px 0px;
+// }
+// %defaultSub {
+// 	font-family: $fontTwo;
+// 	@include font(16, 400);
+// 	line-height: 24px;
+// 	color: $gsOne;
+// 	margin: 0px 0px 20px 0px;
+// }
+// %defaultTypeMid {
+// 	font-family: $fontOne;
+// 	@include font(16, 400);
+// 	color: $gsOne;
+// }

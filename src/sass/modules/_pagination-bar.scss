@@ -1,0 +1,12 @@
+#paginationBar {
+  width: 100%;
+  height: 56px;
+  position: fixed;
+  bottom: $footerHeight;
+  background-color: $gsMist;
+  z-index: 100;
+  ul.pagination {
+    margin: 8px auto;
+    display: table;
+  }
+}

@@ -1,0 +1,14 @@
+@mixin breakpoint($point) {
+  @if $point == wolfUp {
+    @media (min-width: 1601px) { @content; }
+  }
+  @else if $point == wolf {
+    @media (max-width: 1600px) { @content; }
+  }
+  @else if $point == houndUp {
+    @media (min-width: 1201px) { @content; }
+  }
+  @else if $point == hound {
+    @media (max-width: 1200px) { @content; }
+  }
+}

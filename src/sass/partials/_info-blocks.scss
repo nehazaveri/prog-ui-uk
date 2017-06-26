@@ -1,0 +1,21 @@
+%defaultInfoBlock {
+  width: 224px;
+  height: auto;
+  min-height: 56px;
+  margin-bottom: 8px;
+  h3 {
+    @extend %defaultLabel;
+    line-height: 23px;
+    text-transform: inherit;
+    color: $copyThree;
+  }
+  span {
+    font-family: $fontOne;
+    @include font(16, 400);
+    color: $copyOne;
+  }
+}
+
+.infoBlock {
+  @extend %defaultInfoBlock;
+}

@@ -1,0 +1,426 @@
+#creative {
+	height: 100%;
+	min-height: 698px;
+	background-color: $white;
+	#creativeTop {
+		width: 100%;
+		position: fixed;
+		top: 64px;
+		background-color: $gsMist;
+		z-index: 3;
+
+		#creativeSideNav {
+			@extend %defaultLabel;
+			top: 80px;
+			width: auto;
+			background-color: transparent;
+			font-weight: normal;
+			width: 200px;
+			height: auto;
+			padding: 20px 20px 10px 10px;
+
+			&:hover {
+				-webkit-box-shadow: 10px 10px 14px -4px rgba(0,0,0,0.18);
+				-moz-box-shadow: 10px 10px 14px -4px rgba(0,0,0,0.18);
+				box-shadow: 10px 10px 14px -4px rgba(0,0,0,0.18);
+			}
+			li {
+				padding: 5px;
+				border-left: 4px solid transparent;
+				a {
+					text-decoration: none;
+					color: $copyOne;
+				}
+
+				&.active,
+				&:hover {
+					border-left-color: $brightAqua;
+					font-weight: bold;
+				}
+			}
+		}
+		.innerWrap {
+			width: 1080px;
+			height: 138px;
+			margin: 0 auto;
+			position: relative;
+			text-align: center;
+
+			h1 {
+				left: 0;
+				padding-left: 41px;
+				padding-top: 6px;
+				font-size: 1.7rem;
+				position: absolute;
+				top: 22px;
+			}
+			.ctaOne {
+				margin-top: 8px;
+				left: 795px;
+				position: absolute;
+				top: 22px;
+			}
+
+			.ccSort {
+				width: 827px;
+				height: 40px;
+				margin: 0px auto;
+				padding-left: 32px;
+				display: table;
+				table-layout: fixed;
+				@extend %defaultLabel;
+				position: absolute;
+				bottom: 0;
+				label {
+					width: 27%;
+					height: 40px;
+					padding: 9px 13px 0px;
+					display: table-cell;
+					float: left;
+					text-align: center;
+					border-bottom: 2px solid $gsMist;
+					cursor: pointer;
+					@extend %defaultTrans;
+					&.checked {
+						border-bottom: 2px solid $brightAqua;
+					}
+					&:hover {
+						border-bottom: 2px solid scale_color($brightAqua, $lightness: -20%);
+					}
+					&:nth-child(1) {
+						width: 17%;
+					}
+					&:nth-child(5) {
+						width: 30%;
+					}
+					&:nth-child(7) {
+						width: 16%;
+					}
+					&:nth-child(9) {
+						width: 10%;
+					}
+				}
+			}
+			button.addItem {
+				width: 40px;
+				height: 40px;
+				background-color: $brightAqua;
+				position: absolute;
+				bottom: 0;
+				right: 20px;
+				@extend %defaultTrans;
+				@include border-radius(33px);
+				cursor: pointer;
+				border: none;
+				&:after {
+					font-family: clearchannel;
+					content: '\e900';
+					font-size: 15px;
+					color: $white;
+					position: absolute;
+					top: 13px;
+					left: 12px;
+					@extend %defaultTrans;
+				}
+				&:hover {
+					background-color: scale_color($brightAqua, $lightness: -20%);
+				}
+				&:disabled {
+					cursor: default;
+					@include opacity(0.4);
+				}
+			}
+		}
+	}
+	#creativeWrap {
+		background-color: $white;
+		height: auto;
+		padding: 202px 0px 0px;
+	}
+	#creativeSelect {
+		width: 1080px;
+		margin: 0 auto;
+		@extend %defaultLabelLight;
+		text-align: center;
+		color: $copyTwo;
+		position: relative;
+
+		&:after {
+			content: '';
+			width: 100%;
+			height: 100%;
+			background-color: $brightAqua;
+		}
+		a {
+			color: $copyTwo;
+		}
+		ul {
+			width: 75%;
+			display: inline-block;
+			margin-right: 20px;
+			margin-top: 5px;
+
+			&.fullWidth {
+				width: 100%;
+			}
+
+			li {
+				width: 100%;
+				height: 55px;
+				position: relative;
+				padding: 0 80px 0 16px;
+				display: table;
+				table-layout: fixed;
+				background-color: $white;
+				border-bottom: 1px solid $gsMist;
+				&:last-child {
+					margin-bottom: 120px;
+				}
+				&:after {
+					content: '';
+					display: block;
+					width: 100%;
+					height: 55px;
+					position: absolute;
+					left: 0;
+					@extend %defaultShadow;
+					@extend %defaultTrans;
+					@include opacity(0);
+					z-index: 1;
+				}
+				&:hover {
+					cursor: pointer;
+					&:after {
+						@include opacity(1);
+					}
+				}
+				.tooltip {
+					right: 58px;
+					top: 50px !important;
+					white-space: initial; //overriding the span style, allow text to wrap
+				}
+				&.error { //if there is an error on the line item, put error on the li
+					.totalPrice {
+						padding: 18px 4px 16px;
+						&:after {
+							font-family: clearchannel;
+							content: '\e918';
+							font-size: 12px;
+							color: $brightRed;
+							top: 20px;
+							right: 14px;
+						}
+					}
+					&:hover {
+						.tooltip {
+							visibility: visible !important;
+						}
+					}
+				}
+				span {
+					display: table-cell;
+					padding: 17px 4px;
+					width: 30%;
+					float: left;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					cursor: pointer;
+				}
+				.item {
+					width: 19%;
+				}
+				.days {
+					width: 17%;
+				}
+				.endDate {
+					width: 34%;
+				}
+				.edit {
+					height: 55px;
+					width: 20px;
+					position: absolute;
+					right: 19px;
+					z-index: 2;
+					&:after {
+						font-family: clearchannel;
+						content: '\e90d';
+						font-size: 12px;
+						color: $gsConcrete;
+						position: absolute;
+						top: 18px;
+						right: 14px;
+						@extend %defaultTrans;
+					}
+					&:hover {
+						&:after {
+							color: $brightAqua;
+						}
+					}
+				}
+			}
+		}
+
+		#searchWrapper{
+			display: inline-block;
+			vertical-align: top;
+			width: 20%;
+		}
+
+		&.active {
+			margin-top: 129px !important;
+		}
+
+		#creativeSettings {
+			width: 331px;
+			height: auto;
+			position: absolute;
+			top: -56px;
+			//right: 374px;
+			right: 0;
+			padding: 33px 40px 40px;
+			background-color: $white;
+			text-align: left;
+			@extend %defaultShadow;
+			z-index: 3;
+			&:before, &:after {
+				content: "";
+				position: absolute;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-color: transparent;
+				left: 148px;
+			}
+			&:after {
+				border-left: 12px solid transparent;
+				border-right: 12px solid transparent;
+				border-top: none;
+				bottom: -11px;
+				border-bottom: 12px solid $white;
+				top: -8px;
+			}
+			h2 {
+				margin-bottom: 14px;
+			}
+			&.active {
+				display: block;
+			}
+
+			label:after {
+				display: none;
+			}
+
+			.ccCheckedNew label {
+				color: $gsRat !important;
+				font-family: $fontTwo !important;
+			}
+
+			.buttonsWrapper {
+				height:40px;
+			}
+			.ctaOne,
+			.ctaTwo {
+				width: 100px;
+				top: 0;
+				margin-top: 8px;
+				left: 795px;
+				position: absolute;
+			}
+
+			.ctaOne.save {
+				left: 0;
+			}
+			.ctaTwo.cancel {
+				left: 150px;
+			}
+		}
+	}
+
+	.inputWrap {
+		margin-bottom: 16px;
+
+		&.creativeButton {
+			height: 30px;
+		}
+		&:last-of-type {
+			margin-bottom: 0px;
+		}
+		&.checkbox {
+			height: 110px;
+		}
+	}
+	.errorMessage {
+        margin-bottom: 16px;
+        &:last-of-type {
+            margin-bottom: 0px;
+        }
+        color: red;
+    }
+	#searchOrganisations {
+		text-align: left;
+
+		.ccDDViewport {
+			width: 216px;
+		}
+		.ctaOne {
+			width: 130px;
+			margin: 0 auto;
+		}
+
+		label:after {
+			display: none;
+		}
+
+		.inputWrap:last-child {
+			margin-bottom: 96px;
+		}
+	}
+
+	#overlayEditOrganisation {
+		fieldset {
+			text-align: left;
+		}
+
+		.buttonsWrapper {
+			height: 42px;
+
+			button {
+				width: 100px;
+				display: inline-block;
+			}
+			.ctaOne {
+				margin-right: 23px;
+			}
+		}
+
+		label:after {
+			display: none;
+		}
+	}
+	&.readonly { ///READONLY (WHEN ORDER HAS BEEN ORDERED)
+		#creativeTop {
+			#creativeSettings {
+				.infoBlock {
+					&:last-of-type {
+						margin-bottom: 0px;
+					}
+				}
+			}
+			.ccSort {
+				padding: 0 16px;
+			}
+			// #creativePrice {
+			// 	right: 16px;
+			// }
+		}
+		ul#creative {
+			li {
+				padding: 0 16px;
+				&:first-child {
+					margin-top: 0px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,174 @@
+nav {
+	width: 100%;
+	height: 64px;
+	position: fixed;
+	top: 0;
+	z-index: 13;
+	background-color: $darkBlue;
+	#logo {
+		width: 140px;
+		height: 17px;
+		margin: 24px 20px 0px 24px;
+		position: relative;
+		float: left;
+		background: url(../images/logo-clearchannel-sprite@2x.png) no-repeat;
+		background-size: 140px 34px;
+		background-position: 0px -17px;
+		@include opacity(1);
+		span {
+			width: 140px;
+			height: 17px;
+			background: url(../images/logo-clearchannel-sprite@2x.png) no-repeat;
+			background-size: 140px 34px;
+			background-position: 0px 0px;
+			position: absolute;
+			top: 0;
+			@extend %defaultTrans;
+		}
+		&:hover {
+			cursor: pointer;
+			span {
+				@include opacity(0);
+			}
+		}
+	}
+	ul#mainNavigation {
+		@extend %defaultLabel;
+		float: left;
+		li {
+			display: inline-block;
+			list-style: none;
+			a {
+				height: 64px;
+				line-height: 65px;
+				padding: 0px 16px 0px;
+				display: block;
+				color: $white;
+				text-decoration: none;
+				border-bottom: 4px solid $darkBlue;
+				@extend %defaultTrans;
+				&.active {
+					border-bottom: 4px solid $brightAqua;
+				}
+				&:hover {
+					border-bottom: 4px solid scale_color($brightAqua, $lightness: -20%);
+				}
+			}
+		}
+		.disabledMenuItems{
+			background-color: scale_color(lightslategray, $lightness: -20%);
+			cursor: default;
+			a {
+				border-bottom: none;
+				cursor: default;
+				&:hover {
+					border-bottom: none;
+				}
+			}
+		}
+	}
+	#userNav {
+		width: 88px;
+		height: 64px;
+		float: right;
+		position: relative;
+		cursor: pointer;
+		#welcomeMessage {
+			width: 200px;
+			position: absolute;
+			right: 82px;
+			line-height: 65px;
+			text-align: right;
+			@extend %defaultLabelLight;
+			color: $white;
+			@extend %defaultTrans;
+			span {
+				@extend %defaultLabel;
+				color: $white;
+			}
+		}
+		img {
+			position: absolute;
+			top: 16px;
+			right: 42px;
+			@include border-radius(16px);
+		}
+		&:after {
+			font-family: clearchannel;
+			content: '\e904';
+			font-size: 10px;
+			color: $white;
+			position: absolute;
+			top: 27px;
+			right: 24px;
+			@extend %defaultTrans;
+		}
+		&:hover {
+			&:after {
+				top: 30px;
+				color: scale_color($brightAqua, $lightness: -20%);
+			}
+		}
+	}
+	ul#userMenu {
+		width: 112px;
+		height: 104px;
+		position: absolute;
+		top: 56px;
+		right: 16px;
+		padding: 16px 0 0 24px;
+		@extend %defaultLabel;
+		text-align: left;
+		list-style: none;
+		background-color: $white;
+		display: none;
+		@extend %defaultShadow;
+		li {
+			line-height: 24px;
+		}
+		a {
+			color: $copyOne;
+			text-decoration: none;
+
+			&:hover {
+				color: scale_color($brightAqua, $lightness: -20%);
+			}
+		}
+		&.active {
+			display: block;
+		}
+	}
+}
+
+$footerHeight: 40px;
+
+nav#footerNav{
+	bottom: 0;
+	top: auto;
+    text-align: center;
+	height: $footerHeight;
+
+	ul {
+		@extend %defaultLabel;
+		li {
+			display: inline-block;
+			list-style: none;
+			a {
+				height: $footerHeight;
+				line-height: $footerHeight;
+				padding: 0px 16px 0px;
+				display: block;
+				color: $white;
+				text-decoration: none;
+				border-bottom: 4px solid $darkBlue;
+				@extend %defaultTrans;
+				&.active {
+					border-bottom: 4px solid $brightAqua;
+				}
+				&:hover {
+					border-bottom: 4px solid scale_color($brightAqua, $lightness: -20%);
+				}
+			}
+		}
+	}
+}

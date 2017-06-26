@@ -1,0 +1,12 @@
+#subBar {
+  width: 100%;
+  height: 40px;
+  position: fixed;
+  top: 64px;
+  background-color: $white;
+  z-index: 2;
+  h4 {
+    @extend %defaultLabel;
+    padding: 10px 0px 0px 24px;
+  }
+}

@@ -1,0 +1,318 @@
+select::-ms-expand { //ie
+	display: none;
+}
+
+fieldset {
+	border: 0;
+}
+label {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+label.soloLabel {
+	@extend %defaultLabel;
+	color: $copyThree;
+	display: block;
+	margin-bottom: 10px;
+}
+%defaultInputWrap {
+	height: 64px;
+	width: 100%;
+	display: block;
+	position: relative;
+	background-color: $white;
+	font-family: $fontOne;
+}
+
+//INPUTS
+%defaultInput {
+	font-family: $fontOne;
+	@include font(16, 400);
+	padding: 0px 14px 2px 11px;
+	color: $copyOne;
+	width: 224px;
+	height: 40px;
+	border: none;
+	border: 1px solid $gsCloud;
+	cursor: pointer;
+}
+input.ccNumber, input.ccDatepicker, input.ccText, .ccDDViewport, .ccTextarea {
+	@extend %defaultInput;
+	@extend %defaultTrans;
+	&:focus {
+		outline: none;
+	}
+	@include input-placeholder {
+		font-family: $fontOne;
+		font-size: 16px;
+		font-size: 1rem;
+		font-weight: 400 !important;
+		color: $copyFour;
+		opacity: 1;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+	// &.empty {
+	// 	@include input-placeholder {
+	// 		color: $gsThree !important;
+	// 	}
+	// 	&:after {
+	// 		color: $gsThree;
+	// 	}
+	// 	&:hover, &:focus, &.focus {
+	// 		border: 1px solid $brightAqua;
+	// 	}
+	// }
+	// &.filled { //works in conjunction with fields with empty class
+	// 	border-right: 2px solid $terOne;
+	// }
+	&.error {
+		border: 1px solid $brightRed;
+	}
+	&:focus, &.focus {
+		border: 1px solid $brightAqua;
+	}
+	&:hover {
+		border: 1px solid scale_color($brightAqua, $lightness: -20%);
+	}
+	// &[readonly], &[disabled] {
+	// 	border-right: 2px solid $gsOne;
+	// 	&:hover, &:focus, &.focus {
+	// 		border-right: 2px solid $gsOne;
+	// 	}
+	// }
+}
+.ccDDViewport {
+	width: 224px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 7px 30px 0px 11px;
+	overflow: hidden;
+	white-space: nowrap;
+	-ms-text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	&:after {
+		font-family: clearchannel;
+		content: '\e905';
+		font-size: 16px;
+		color: $gsRat;
+		position: absolute;
+		top: 7px;
+		right: 10px;
+	}
+	&.empty {
+		color: $copyFour !important;
+		&:focus, &.focus {
+			border: 1px solid $brightAqua;
+		}
+	}
+	// &.readonly {
+	// 	color: $gsOne;
+	// 	border-right: 2px solid $gsOne;
+	// 	&:after {
+	// 		color: $gsOne;
+	// 	}
+	// 	&:hover, &:focus, &.focus {
+	// 		border-right: 2px solid $gsOne;
+	// 	}
+	// }
+}
+select.ccDropdown {//http://stackoverflow.com/questions/26625942/set-dropdown-list-option-with-ellipses
+	direction: ltr;
+	border: 0 !important;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	overflow: hidden !important;
+	text-overflow: ellipsis;
+	color: transparent;
+	background: none;
+	z-index: 1;
+	font-size: 16px; //for option size
+	@include opacity(0); //ie
+	option {
+		color: $copyOne;
+	}
+	&:focus, &.focus {
+		border: 1px solid $brightAqua;
+	}
+}
+.ccTextarea {
+	height: 120px;
+	padding-top: 7px;
+	margin-top: 1px;
+	resize: none;
+}
+input.ccDatepicker {
+	padding: 1px 14px 2px 11px;
+	&:after {
+		font-family: clearchannel;
+		content: '\e905';
+		font-size: 16px;
+		color: $gsRat;
+		position: absolute;
+		top: 7px;
+		right: 10px;
+	}
+}
+.ccText {
+	padding-top: 1px !important;
+}
+//END INPUTS
+
+
+
+.inputWrap {
+	@extend %defaultInputWrap;
+}
+.inputWrap label {
+	@extend %defaultLabel;
+	line-height: 23px;
+	color: $copyThree;
+	position: relative; //for tooltip positioning
+	cursor: pointer;
+	&:after {
+		font-family: clearchannel;
+		content: '\e910';
+		font-size: 7px;
+		color: $gsRat;
+		position: absolute;
+		top: -3px;
+		right: -12px;
+	}
+	&:hover {
+		.tooltip {
+			visibility: visible;
+		}
+	}
+}
+.inputWrap input, .inputWrap select {
+	width: 100%;
+	height: 40px;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	outline: none;
+	cursor: pointer;
+}
+
+
+input[type=number]::-webkit-inner-spin-button, //remove number input styling
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+//CHECKBOXES
+input[type=checkbox].ccCheckbox, input[type=radio].ccRadio, input[type=radio].ccSortRadio {//remove default checkboxes
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+}
+.checkboxWrap {
+	width: 224px;
+	height: 24px;
+	margin-bottom: 8px;
+	position: relative;
+	label.ccCheckboxLabel {
+		width: 224px;
+		height: 24px;
+		position: absolute;
+		@extend %defaultLabel;
+		line-height: 24px;
+		cursor: pointer;
+		div {
+			width: 16px;
+			height: 16px;
+			margin: 4px 8px 4px 4px;
+			float: left;
+			background-color: $gsBunny;
+			@include border-radius(2px);
+			@extend %defaultTrans;
+		}
+		&:hover {
+			div {
+				background-color: scale_color($brightAqua, $lightness: -20%);
+			}
+		}
+	}
+}
+
+label.checked.ccCheckboxLabel {
+	div {
+		background-color: $brightAqua;
+	}
+	&:hover {
+		div {
+			background-color: scale_color($brightAqua, $lightness: -20%);
+		}
+	}
+	&:before {
+		font-family: clearchannel;
+		content: '\e917';
+		font-size: 12px;
+		color: $white;
+		position: absolute;
+		top: 0px;
+		left: 6px;
+	}
+}
+
+.radioWrap {
+	width: 224px;
+	height: 24px;
+	margin-bottom: 8px;
+	position: relative;
+	label.ccRadioLabel {
+		width: 224px;
+		height: 24px;
+		position: absolute;
+		@extend %defaultLabel;
+		line-height: 24px;
+		cursor: pointer;
+		div {
+			width: 16px;
+			height: 16px;
+			margin: 4px 8px 4px 4px;
+			float: left;
+			background-color: $gsBunny;
+			@include border-radius(16px);
+			@extend %defaultTrans;
+		}
+		&:hover {
+			div {
+				background-color: scale_color($brightAqua, $lightness: -20%);
+			}
+		}
+	}
+}
+
+label.checked.ccRadioLabel {
+	div {
+		background-color: $brightAqua;
+	}
+	&:hover {
+		div {
+			background-color: scale_color($brightAqua, $lightness: -20%);
+		}
+	}
+	// &:before {
+	// 	font-family: clearchannel;
+	// 	content: '\e917';
+	// 	font-size: 12px;
+	// 	color: $white;
+	// 	position: absolute;
+	// 	top: 0px;
+	// 	left: 7px;
+	// }
+}

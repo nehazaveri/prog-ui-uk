@@ -1,0 +1,75 @@
+@import "compass";
+@import "compass/css3/selection";//custom selections
+@import "compass/css3/user-interface";//for placeholders
+@import "partials/chris-reset";
+
+//MIXINS
+@import "partials/vertical-align";
+@import "partials/keyframes";
+@import "partials/rgba";
+
+//THEME
+@import "partials/breakpoints";
+@import "partials/colors";
+@import "partials/fonts";
+@import "partials/typography";
+@import "partials/iconography";
+@import "partials/buttons";
+@import "partials/form-elements";
+@import "partials/datepicker-custom";
+ @import "partials/tooltips";
+@import "partials/loader";
+@import "partials/pagination";
+// @import "partials/horizontal-rule";
+@import "partials/default-transitions";
+// @import "partials/default-animations";
+@import "partials/shadows";
+@import "partials/slider";
+@import "partials/overlays";
+@import "partials/info-blocks";
+
+//MODULES
+@import "modules/main-navigation";
+@import "modules/sub-bar";
+@import "modules/error-bar";
+@import "modules/pagination-bar";
+@import "modules/terms";
+@import "modules/errors";
+@import "modules/creative";
+
+
+html, body {
+	height: 100%;
+}
+html {
+	background-color: $background;
+    -webkit-text-size-adjust: 100%; //Prevent font scaling in landscape while allowing user zoom
+}
+body {
+	&.overShow {
+		overflow: hidden;
+	}
+}
+a {
+	&:hover {
+		cursor: pointer;
+	}
+}
+main {
+
+}
+
+#root{
+	height: 100%;
+}
+#root>div{
+	height: 100%;
+}
+
+.header-icon-menu svg{
+	color:#000434 !important;
+}
+
+.pagination{
+	text-align: center;
+}

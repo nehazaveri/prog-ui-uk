@@ -1,0 +1,39 @@
+%defaultAni {
+	@include keyframes(fadeIn) {
+		0% { 
+			@include opacity(0); 	
+		}
+	  	100% { 
+	  		@include opacity(1);
+	  	}
+	};
+	&.aniGo { //this class is added through javascript to anything with a ani class
+		@include animation('fadeIn 1s linear');
+	};
+}
+
+%aniFadeUp {
+	@include keyframes(fadeUp) {
+		0% { 
+			@include opacity(0);
+			@include vertical-align(60%);
+		}
+	  	100% { 
+	  		@include opacity(1);
+	  		@include vertical-align(42%);
+	  	}
+	};
+	@include animation('fadeUp 0.6s forwards');
+}
+
+%aniScale {
+	@include keyframes(scaleUp) {
+		0% {
+			@include scale(1);
+		}
+	  	100% { 
+	  		@include scale(1.1);
+	  	}
+	};
+	@include animation('scaleUp 0.6s forwards');
+}

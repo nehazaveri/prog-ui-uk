@@ -1,0 +1,49 @@
+#terms {
+  width: 100%;
+  height: 100%;
+  .innerWrap {
+    text-align: center;
+    width: 1152px;
+    margin: 39px auto 0;
+    h1 {
+      margin-bottom: 17px;
+    }
+    address, ul, p {
+      font-family: $fontTwo;
+      @include font(14, 400);
+      line-height: 24px;
+      line-height: 1.5rem;
+      color: $copyOne;
+    }
+    address {
+      font-style: initial;
+      margin-bottom: 24px;
+    }
+    ul {
+      list-style: none;
+      margin-bottom: 24px;
+      &:last-of-type {
+        margin-bottom: 32px;
+      }
+    }
+    p {
+      margin-bottom: 24px;
+      a {
+        color: $copyOne;
+        &:hover {
+          color: scale_color($brightAqua, $lightness: -20%);
+        }
+      }
+    }
+  }
+  #topBar {
+    height: 64px;
+    background-color: $darkBlue;
+    overflow: auto;
+    img {
+      margin-top: 24px;
+      margin-left: 24px;
+      display: block;
+    }
+  }
+}

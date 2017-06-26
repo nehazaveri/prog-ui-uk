@@ -1,0 +1,246 @@
+%defaultTooltip {
+  min-width: 184px;
+  max-width: 184px;
+  background-color: $white;
+  padding: 20px 24px 22px;
+  position: absolute !important;
+  right: -169px;
+  top: -84px;
+  z-index: 1;
+  visibility: hidden;
+  @include transition(top 0.2s ease-in-out, left 0.2s ease-in-out);
+  font-family: $fontOne !important;
+  color: $copyThree !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  line-height: 16px;
+  text-align: left;
+  @extend %defaultShadow;
+  z-index: 12;
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+    left: 12px;
+  }
+  &:after {
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid $white;
+    bottom: -11px;
+  }
+  &.error {
+    color: $white !important;
+    background-color: $brightRed !important;
+    &:after {
+      border-top: 12px solid $brightRed;
+    }
+  }
+}
+
+%defaultTooltipBelow {
+  @extend %defaultTooltip;
+  &:after {
+    border-top: none;
+    border-bottom: 12px solid $white;
+    top: -8px;
+  }
+}
+.tooltip {
+  @extend %defaultTooltip;
+  &.active {
+    visibility: visible;
+  }
+}
+
+.tooltip.left { //LEFT SIDE TOOLTIPS
+  @extend %defaultTooltip;
+  right: 368px;
+  bottom: 0px !important;
+  &:before, &:after {
+    right: -20px;
+    left: initial;
+  }
+  &:after {
+    border-left: 12px solid $white;
+    border-bottom: 12px solid transparent;
+    border-top: 12px solid transparent;
+    bottom: 8px;
+  }
+  &.active {
+    bottom: 60px;
+    visibility: visible;
+  }
+  &.error {
+    color: $white !important;
+    background-color: $brightRed !important;
+    &:after {
+      border-left: 12px solid $brightRed;
+    }
+  }
+  &.prompt {
+    color: $white !important;
+    background-color: $brightAqua !important;
+    &:after {
+      border-left: 12px solid $brightAqua;
+    }
+  }%defaultTooltip {
+     min-width: 184px;
+     max-width: 184px;
+     background-color: $white;
+     padding: 20px 24px 22px;
+     position: absolute !important;
+     right: -169px;
+     top: -84px;
+     z-index: 1;
+     visibility: hidden;
+     @include transition(top 0.2s ease-in-out, left 0.2s ease-in-out);
+     font-family: $fontOne !important;
+     color: $copyThree !important;
+     font-size: 14px !important;
+     font-weight: 400 !important;
+     font-style: normal !important;
+     line-height: 16px;
+     text-align: left;
+     @extend %defaultShadow;
+     z-index: 12;
+     &:before, &:after {
+       content: "";
+       position: absolute;
+       width: 0;
+       height: 0;
+       border-style: solid;
+       border-color: transparent;
+       left: 12px;
+     }
+     &:after {
+       border-left: 12px solid transparent;
+       border-right: 12px solid transparent;
+       border-top: 12px solid $white;
+       bottom: -11px;
+     }
+     &.error {
+       color: $white !important;
+       background-color: $brightRed !important;
+       &:after {
+         border-top: 12px solid $brightRed;
+       }
+     }
+   }
+
+  %defaultTooltipBelow {
+    @extend %defaultTooltip;
+    &:after {
+      border-top: none;
+      border-bottom: 12px solid $white;
+      top: -8px;
+    }
+  }
+  .tooltip {
+    @extend %defaultTooltip;
+    &.active {
+      visibility: visible;
+    }
+  }
+
+  .tooltip.left { //LEFT SIDE TOOLTIPS
+    @extend %defaultTooltip;
+    right: 368px;
+    bottom: 0px !important;
+    &:before, &:after {
+      right: -20px;
+      left: initial;
+    }
+    &:after {
+      border-left: 12px solid $white;
+      border-bottom: 12px solid transparent;
+      border-top: 12px solid transparent;
+      bottom: 8px;
+    }
+    &.active {
+      bottom: 60px;
+      visibility: visible;
+    }
+    &.error {
+      color: $white !important;
+      background-color: $brightRed !important;
+      &:after {
+        border-left: 12px solid $brightRed;
+      }
+    }
+    &.prompt {
+      color: $white !important;
+      background-color: $brightAqua !important;
+      &:after {
+        border-left: 12px solid $brightAqua;
+      }
+    }
+  }
+
+  .tooltip.right { //RIGHT SIDE TOOLTIPS
+    @extend %defaultTooltip;
+    background-color: $white;
+    right: -212px;
+    top: -11px !important;
+    &:before, &:after {
+      left: -20px;
+    }
+    &:after {
+      border-right: 12px solid $white;
+      border-bottom: 12px solid transparent;
+      border-top: 12px solid transparent;
+      top: 8px;
+    }
+    &.active {
+      bottom: 60px;
+      visibility: visible;
+    }
+    &.error {
+      color: $white !important;
+      background-color: $brightRed !important;
+      &:after {
+        border-left: 12px solid transparent !important;
+        border-right: 12px solid transparent !important;
+        border-bottom: 12px solid #EF3F4A !important;
+        top: -22px;
+        left: 4px;
+      }
+    }
+  }
+}
+
+.tooltip.right { //RIGHT SIDE TOOLTIPS
+  @extend %defaultTooltip;
+  background-color: $white;
+  right: -212px;
+  top: -11px !important;
+  &:before, &:after {
+    left: -20px;
+  }
+  &:after {
+    border-right: 12px solid $white;
+    border-bottom: 12px solid transparent;
+    border-top: 12px solid transparent;
+    top: 8px;
+  }
+  &.active {
+    bottom: 60px;
+    visibility: visible;
+  }
+  &.error {
+    color: $white !important;
+    background-color: $brightRed !important;
+    &:after {
+      border-left: 12px solid transparent !important;
+      border-right: 12px solid transparent !important;
+      border-bottom: 12px solid #EF3F4A !important;
+      top: -22px;
+      left: 4px;
+    }
+  }
+}
+

@@ -1,0 +1,51 @@
+//BUTTONS
+%btn {
+	width: 224px;
+	height: 40px;
+	font-family: $fontOne;
+	font-size: 14px;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: $white;
+	border: none;
+	cursor: pointer;
+	display: block;
+	@include border-radius(20px);
+	@extend %defaultTrans;
+	&:focus {
+		outline: 0;
+	}
+	&:disabled {
+		cursor: default;
+		@include opacity(0.4);
+	}
+}
+.ctaOne {
+	@extend %btn;
+	padding: 14px 0px;
+	background-color: $brightAqua;
+	&:hover {
+		background-color: scale_color($brightAqua, $lightness: -20%);
+	}
+}
+button.ctaOne {
+	color: transparent; //HACK to solve button text padding
+	text-shadow: 0px -2px 0px $white; //HACK to solve button text padding
+}
+.ctaTwo {
+	@extend %btn;
+	padding: 14px 0px;
+	border: 1px solid $gsSlate;
+	&:hover {
+		border: 1px solid scale_color($brightAqua, $lightness: -20%);
+	}
+}
+button.ctaTwo {
+	color: transparent; //HACK to solve button text padding
+	background-color: transparent;
+	text-shadow: 0px -3px 0px $gsSlate; //HACK to solve button text padding
+	&:hover {
+		text-shadow: 0px -3px 0px scale_color($brightAqua, $lightness: -20%);
+	}
+}

@@ -1,0 +1,11 @@
+@mixin vertical-align($pos : 50%) {
+  	position: relative;
+  	top: $pos;
+  	-webkit-transform: translateY(-$pos);
+  	-ms-transform: translateY(-$pos);
+  	transform: translateY(-$pos);
+}
+
+.vertWrap {
+	@include vertical-align(50%);
+}
