@@ -7,7 +7,7 @@ import sinon from 'sinon';
 
 import {getCreativesSuccess, fetchCreativeList, uploadCreative} from '../../../src/app/actionCreators/creativeActions';
 import {showSpinner, hideSpinner, showSuccessBar, showErrorBarWithError} from '../../../src/app/actionCreators/globalActions';
-import {initialState} from '../../../src/app/reducers/CreativeReducer';
+import {initialState} from '../../../src/app/reducers/creativeReducer';
 import {constants} from '../../../src/app/utils/constants';
 import {stubGetRequest, stubSuccessfulGetRequest, stubPostRequest, stubSuccessfulPostRequest, stubPutRequest, stubSuccessfulPutRequest} from '../../utils/stubRequests';
 
