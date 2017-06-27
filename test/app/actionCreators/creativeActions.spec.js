@@ -5,7 +5,7 @@ import configureMockStore from 'redux-mock-store';
 import _ from 'lodash';
 import sinon from 'sinon';
 
-import {getCreativesSuccess, fetchCreativeList, uploadCreative} from '../../../src/app/actionCreators/CreativeActions';
+import {getCreativesSuccess, fetchCreativeList, uploadCreative} from '../../../src/app/actionCreators/creativeActions';
 import {showSpinner, hideSpinner, showSuccessBar, showErrorBarWithError} from '../../../src/app/actionCreators/globalActions';
 import {initialState} from '../../../src/app/reducers/CreativeReducer';
 import {constants} from '../../../src/app/utils/constants';
