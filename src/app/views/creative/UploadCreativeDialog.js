@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {uploadCreative} from '../../actionCreators/creativeActions';
-import { FileUpload } from 'redux-file-upload'
 
 import {bindActionCreators} from 'redux';
 import { VALID_FILE_EXTENSIONS } from '../../utils/constants'
