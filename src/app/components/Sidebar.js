@@ -9,7 +9,7 @@ export default class Sidebar extends Component {
 
   render() {
     return (
-      <nav id="organisationSideNav">
+      <nav id="creativeSideNav">
         <ul>
           <li className="active">
             <Link to={ CREATIVE_PATH }>Manage Creative</Link>

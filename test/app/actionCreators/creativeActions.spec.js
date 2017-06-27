@@ -105,19 +105,27 @@ describe('Creative Actions', () => {
                 "creativeTitle": "TEST_AB_N1",
                 "advertiser": "00001",
                 "product": "00001"
-            }
+            },
+            blob = new Blob([""], { type: 'text/html' });
+            blob["lastModifiedDate"] = "";
+            blob["name"] = "filename.png";
+
+            let formData = new FormData();
+            formData.append("file",blob);
+            formData.append("title","TEST_AB_N1");
+            formData.append("advertiser","00001");
+            formData.append("product","00001");
             const store = mockStore(Object.assign({}, initialState)),
                 stubMakePostRequest = stubSuccessfulPostRequest({
                     url: BASE_URL ,
-                    body : {
-                        creativeTitle : creative.creativeTitle,
-                        advertiser : creative.advertiser,
-                        product : creative.product
-                    }
+                    headers : {
+                        'Content-Type': 'multipart/form-data'
+                    },
+                    body : formData
                 }),
                 stubMakeGetRequest = stubSuccessfulGetRequest({url : BASE_URL}, creative),
                 successCallbackSpy = sinon.spy();
-            store.dispatch(uploadCreative(creative.creativeTitle,creative.advertiser,creative.product,successCallbackSpy)).then(() => {
+            store.dispatch(uploadCreative(creative.creativeTitle,creative.advertiser,creative.product,blob,successCallbackSpy)).then(() => {
                   expect(stubMakePostRequest.callCount).to.equal(1);
 
                   expect(store.getActions()).to.eql([

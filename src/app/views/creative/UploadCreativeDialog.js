@@ -23,11 +23,11 @@ class UploadCreativeDialog extends Component {
     }
 
     uploadCreative(){
-        let {creativeTitle, advertiser, product , creativePath} = this;
-            this.props.uploadCreative(creativeTitle.value,
+        let {title, advertiser, product , creativePath} = this;
+            this.props.uploadCreative(title.value,
             advertiser.value,
             product.value,
-            //creativePath,
+            creativePath.files[0],
             this.props.onCloseDialog);
     }
 
@@ -44,7 +44,7 @@ class UploadCreativeDialog extends Component {
 
     validateFields() {
         let isInvalid = true;
-        isInvalid = _.isEmpty(this.creativeTitle.value) ||
+        isInvalid = _.isEmpty(this.title.value) ||
                 _.isEmpty(this.advertiser.value) ||
                 _.isEmpty(this.product.value) ||
                 _.isEmpty(this.creativePath.files);
@@ -55,7 +55,6 @@ class UploadCreativeDialog extends Component {
 
 
     render(){
-    console.log(validExtension);
         return(
            <div id="creativeSettings">
                 <h2>
@@ -63,16 +62,16 @@ class UploadCreativeDialog extends Component {
                 </h2>
                 <fieldset>
                     <div className="inputWrap">
-                        <label htmlFor="creativeTitle">Creative Title:</label>
+                        <label htmlFor="title">Creative Title:</label>
                         <input type="text"
                             className="ccText"
                             placeholder="Enter Creative Title"
                             ref={input => {
-                                this.creativeTitle = input;
+                                this.title = input;
                             }}
                             onChange={e => {this.validateFields();}}
                             required="true"
-                            id="creativeTitle">
+                            id="title">
                         </input>
                     </div>
                     <div className="inputWrap">
