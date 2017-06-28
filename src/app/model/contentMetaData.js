@@ -5,6 +5,10 @@ class ContentMetaData {
         this.title = title;
         this.advertiser = advertiser;
         this.product = product;
+        this.user = {
+            "userId": "1",
+            "role":"super"
+        }
     };
 }
 

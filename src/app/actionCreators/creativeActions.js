@@ -2,6 +2,7 @@ import {helperSortFunc, helperSortFuncInt} from '../utils';
 import {constants} from '../utils/constants';
 import {makeGetRequest, makePutRequest, checkAndGetResponse, makePostRequest} from '../utils/httpUtils';
 import {showSpinner, hideSpinner, showSuccessBar, showErrorBarWithError} from './globalActions';
+import FormData from 'form-data';
 
 export const baseUrl = `${APP_CONSTANTS.ENDPOINTS.ACCOUNT_API_URL}/creative`;
 
@@ -9,12 +10,16 @@ export function uploadCreative(creative, successCallback) {
   return function (dispatch) {
     dispatch(showSpinner());
 
+    let formData = new FormData();
+    formData.append('contentMetaData',creative.contentMetaData);
+    formData.append('content',creative.content);
+
     return makePostRequest({
       url: baseUrl,
       headers: {
         'Content-Type': 'multipart/form-data'
       },
-      body: creative
+      body: formData
     }).
     then(checkAndGetResponse).
     then(response => {

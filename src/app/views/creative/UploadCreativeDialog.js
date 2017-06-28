@@ -22,8 +22,7 @@ class UploadCreativeDialog extends Component {
         this.uploadCreative = this.uploadCreative.bind(this);
         this.validateFields = this.validateFields.bind(this);
         this.validateFileExtensions = this.validateFileExtensions.bind(this);
-        this.getBase64 = this.getBase64.bind(this);
-        this.uploadCall = this.uploadCall.bind(this);
+//        this.getBase64 = this.getBase64.bind(this);
     }
 
 // Commented code to be used if base64 string needs to be passed to backend api

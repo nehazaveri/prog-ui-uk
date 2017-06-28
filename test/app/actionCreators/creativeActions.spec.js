@@ -104,7 +104,7 @@ describe('Creative Actions', () => {
             const creative = {
             "contentMetaData":{
                 "id": 4240,
-                "creativeTitle": "TEST_AB_N1",
+                "title": "TEST_AB_N1",
                 "advertiser": "00001",
                 "product": "00001"
                 }
@@ -113,7 +113,7 @@ describe('Creative Actions', () => {
             blob["lastModifiedDate"] = "";
             blob["name"] = "filename.png";
 
-            let creativeObj = new Creative('title','advertiser','product',blob,"base64String");
+            let creativeObj = new Creative('TEST_AB_N1','00001','00001',blob);
             const store = mockStore(Object.assign({}, initialState)),
                 stubMakePostRequest = stubSuccessfulPostRequest({
                     url: BASE_URL ,
@@ -124,7 +124,7 @@ describe('Creative Actions', () => {
                 }),
                 stubMakeGetRequest = stubSuccessfulGetRequest({url : BASE_URL}, creative),
                 successCallbackSpy = sinon.spy();
-            store.dispatch(uploadCreative(creative,successCallbackSpy)).then(() => {
+            store.dispatch(uploadCreative(creativeObj,successCallbackSpy)).then(() => {
                   expect(stubMakePostRequest.callCount).to.equal(1);
 
                   expect(store.getActions()).to.eql([
@@ -132,7 +132,7 @@ describe('Creative Actions', () => {
                     showSpinner(),
                     getCreativesSuccess(creative),
                     hideSpinner(),
-                    showSuccessBar(`Creative '${creative.title}' uploaded successfully`)
+                    showSuccessBar(`Creative '${creative.contentMetaData.title}' uploaded successfully`)
                   ]);
 
                   stubMakePostRequest.restore();
