@@ -9,6 +9,7 @@ import {getCreativesSuccess, fetchCreativeList, uploadCreative} from '../../../s
 import {showSpinner, hideSpinner, showSuccessBar, showErrorBarWithError} from '../../../src/app/actionCreators/globalActions';
 import {initialState} from '../../../src/app/reducers/creativeReducer';
 import {constants} from '../../../src/app/utils/constants';
+import Creative from '../../../src/app/model/creative'
 import {stubGetRequest, stubSuccessfulGetRequest, stubPostRequest, stubSuccessfulPostRequest, stubPutRequest, stubSuccessfulPutRequest} from '../../utils/stubRequests';
 
 describe('Creative Actions', () => {
@@ -101,31 +102,29 @@ describe('Creative Actions', () => {
     describe('uploadCreative',() => {
         it(`should correctly uploadCreative and dispatch other actions`, (done) => {
             const creative = {
+            "contentMetaData":{
                 "id": 4240,
                 "creativeTitle": "TEST_AB_N1",
                 "advertiser": "00001",
                 "product": "00001"
+                }
             },
             blob = new Blob([""], { type: 'text/html' });
             blob["lastModifiedDate"] = "";
             blob["name"] = "filename.png";
 
-            let formData = new FormData();
-            formData.append("file",blob);
-            formData.append("title","TEST_AB_N1");
-            formData.append("advertiser","00001");
-            formData.append("product","00001");
+            let creativeObj = new Creative('title','advertiser','product',blob,"base64String");
             const store = mockStore(Object.assign({}, initialState)),
                 stubMakePostRequest = stubSuccessfulPostRequest({
                     url: BASE_URL ,
                     headers : {
                         'Content-Type': 'multipart/form-data'
                     },
-                    body : formData
+                    body : creativeObj
                 }),
                 stubMakeGetRequest = stubSuccessfulGetRequest({url : BASE_URL}, creative),
                 successCallbackSpy = sinon.spy();
-            store.dispatch(uploadCreative(creative.creativeTitle,creative.advertiser,creative.product,blob,successCallbackSpy)).then(() => {
+            store.dispatch(uploadCreative(creative,successCallbackSpy)).then(() => {
                   expect(stubMakePostRequest.callCount).to.equal(1);
 
                   expect(store.getActions()).to.eql([
@@ -133,7 +132,7 @@ describe('Creative Actions', () => {
                     showSpinner(),
                     getCreativesSuccess(creative),
                     hideSpinner(),
-                    showSuccessBar(`Creative '${creative.creativeTitle}' uploaded successfully`)
+                    showSuccessBar(`Creative '${creative.title}' uploaded successfully`)
                   ]);
 
                   stubMakePostRequest.restore();

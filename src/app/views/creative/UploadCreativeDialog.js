@@ -6,6 +6,8 @@ import {bindActionCreators} from 'redux';
 import { VALID_FILE_EXTENSIONS } from '../../utils/constants'
 import _ from 'lodash';
 
+import Creative from '../../model/creative'
+
 const validExtension = _.join(VALID_FILE_EXTENSIONS,", ")
 class UploadCreativeDialog extends Component {
 
@@ -20,15 +22,40 @@ class UploadCreativeDialog extends Component {
         this.uploadCreative = this.uploadCreative.bind(this);
         this.validateFields = this.validateFields.bind(this);
         this.validateFileExtensions = this.validateFileExtensions.bind(this);
+        this.getBase64 = this.getBase64.bind(this);
+        this.uploadCall = this.uploadCall.bind(this);
     }
+
+// Commented code to be used if base64 string needs to be passed to backend api
+//    uploadCreative(){
+//        let {title, advertiser, product , creativePath} = this;
+//         this.getBase64(creativePath.files[0]).
+//                then(base64String =>
+//                 {
+//                     let creative = new Creative(title.value,advertiser.value,product.value,creativePath.files[0],base64String);
+//                     this.props.uploadCreative(creative,
+//                                     this.props.onCloseDialog);
+//                 });
+//
+//    }
+//
+//    getBase64(file) {
+//        return new Promise(
+//            function(resolve,reject){
+//                let reader = new FileReader();
+//                reader.readAsDataURL(file);
+//                reader.onload = function()
+//                    {
+//                        resolve(reader.result);
+//                    };
+//                });
+//    }
 
     uploadCreative(){
         let {title, advertiser, product , creativePath} = this;
-            this.props.uploadCreative(title.value,
-            advertiser.value,
-            product.value,
-            creativePath.files[0],
-            this.props.onCloseDialog);
+        let creative = new Creative(title.value,advertiser.value,product.value,creativePath.files[0]);
+        this.props.uploadCreative(creative, this.props.onCloseDialog);
+
     }
 
     validateFileExtensions(){

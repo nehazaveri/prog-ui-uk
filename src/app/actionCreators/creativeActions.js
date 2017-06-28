@@ -5,28 +5,16 @@ import {showSpinner, hideSpinner, showSuccessBar, showErrorBarWithError} from '.
 
 export const baseUrl = `${APP_CONSTANTS.ENDPOINTS.ACCOUNT_API_URL}/creative`;
 
-export function uploadCreative(title, advertiser, product,file, successCallback) {
+export function uploadCreative(creative, successCallback) {
   return function (dispatch) {
     dispatch(showSpinner());
-
-    let creative = {
-        title,advertiser,product
-    }
-
-    let data = new FormData();
-    data.append('file', file);
-    data.append('title', title);
-    data.append('advertiser', advertiser);
-    data.append('product', product);
-
-    console.log(data);
 
     return makePostRequest({
       url: baseUrl,
       headers: {
         'Content-Type': 'multipart/form-data'
       },
-      body: data
+      body: creative
     }).
     then(checkAndGetResponse).
     then(response => {
@@ -36,7 +24,7 @@ export function uploadCreative(title, advertiser, product,file, successCallback)
       return dispatch(fetchCreativeList());
     }).
     then(() => {
-      dispatch(showSuccessBar(`Creative '${title}' uploaded successfully`));
+      dispatch(showSuccessBar(`Creative '${creative.contentMetaData.title}' uploaded successfully`));
     }).
     catch(err => {
       console.error("Failed to upload a new creative!", err);
