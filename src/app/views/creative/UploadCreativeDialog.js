@@ -52,7 +52,7 @@ class UploadCreativeDialog extends Component {
 
     uploadCreative(){
         let {title, advertiser, product , creativePath} = this;
-        let creative = new Creative(title.value,advertiser.value,product.value,creativePath.files[0]);
+        let creative = new Creative(title.value, advertiser.value, product.value, creativePath.files[0]);
         this.props.uploadCreative(creative, this.props.onCloseDialog);
 
     }
@@ -63,9 +63,10 @@ class UploadCreativeDialog extends Component {
         let fileName = file.name;
         let ext = fileName.substring(fileName.lastIndexOf('.') + 1);
         let validExtension   = !isInvalid && _.includes(VALID_FILE_EXTENSIONS,ext);
-        this.setState({ saveButtonDisabled : !validExtension ,
-                        showFileExtensionErrorText : !validExtension,
-                        })
+        this.setState({
+            saveButtonDisabled : !validExtension ,
+            showFileExtensionErrorText : !validExtension,
+        });
     }
 
     validateFields() {
@@ -133,7 +134,6 @@ class UploadCreativeDialog extends Component {
                           ref={input => {
                               this.creativePath = input;
                           }}
-                          //onChange={this.onFileChange}
                           onChange={e => {this.validateFileExtensions();}}
                           className='form-control' />
                     </div>
