@@ -22,7 +22,7 @@ install:
   - grunt test && grunt prod
 
 script:
-  - docker build -t cciuk.azurecr.io/cci-mgmt-ui .
-  - docker push cciuk.azurecr.io/cci-mgmt-ui
+  - docker build -t cciuk.azurecr.io/cci-mgmt-ui:v1 .
+  - docker push cciuk.azurecr.io/cci-mgmt-ui:v1
 
 
