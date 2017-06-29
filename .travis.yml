@@ -1,5 +1,8 @@
 sudo: true
 
+services:
+  docker
+
 branches:
  only:
  - master
@@ -9,16 +12,17 @@ node_js:
   - "6.9.2"
 
 before_install:
+  - docker login cciuk.azurecr.io -u cciuk -p +/=v=Q=/G6u=o5Zd+O/2UkrNpFrYma=L
   - npm install -g grunt
-#  - gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-#  - curl -sSL https://get.rvm.io | bash -s stable --ruby
-#  - rvm install 2.0
-#  - rvm use 2.1
   - gem install sass
   - gem install compass
 
 install:
   - npm install
-  - grunt prod
-  - grunt test
+  - grunt test && grunt prod
+
+script:
+  - docker build -t cciuk.azurecr.io/cci-mgmt-ui .
+  - docker push cciuk.azurecr.io/cci-mgmt-ui
+
 
